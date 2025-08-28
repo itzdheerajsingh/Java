@@ -86,7 +86,7 @@
     /* Progress */
     .progress{ height:10px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; border:1px solid rgba(255,255,255,.12); margin-top:12px; }
     .bar{ height:100%; width:0%; background:linear-gradient(90deg, var(--accent), var(--accent-2)); animation:load 2.6s cubic-bezier(.2,.8,.2,1) forwards; }
-    @keyframes load{ to{ width:82% } }
+    @keyframes load{ to{ width:82% } }  /* For blue line in progress */
 
     /* Tags */
     .tags{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px }
@@ -159,8 +159,8 @@
         <p><strong id="days">0</strong> days of practice logged so far.</p>
         <div class="progress" aria-label="progress bar"><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="82"></div></div>
         <ul class="list" aria-label="milestones">
-          <li>✅ Completed: Variables, Control Flow, Methods</li>
-          <li>✅ Completed: OOP (Classes, Inheritance, Polymorphism)</li>
+          <li>🚧 In progress: Variables, Control Flow, Methods</li>
+          <li>🚧 In progress: OOP (Classes, Inheritance, Polymorphism)</li>
           <li>🚧 In progress: Data Structures & Algorithms</li>
         </ul>
       </article>
@@ -225,7 +225,7 @@ java -cp src basics.HelloWorld
     document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
     // Simple animated day counter — edit start date to your actual streak start
-    const start = new Date('2025-08-01T00:00:00'); // ← change to your real start
+    const start = new Date('2025-08-26 T00:00:00'); // ← change to your real start
     const today = new Date();
     const diffDays = Math.max(1, Math.ceil((today - start) / (1000*60*60*24)));
     const daysEl = document.getElementById('days');
