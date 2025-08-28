@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Java • Daily Practice & Exercises</title>
+  <meta name="description" content="Daily Java practice code and exercise solutions by Dheeraj Singh." />
+  <meta name="theme-color" content="#0f172a" />
+  <style>
+    :root{
+      --bg:#0b1020; /* deep slate */
+      --fg:#e6e9f2; /* light */
+      --muted:#a5b4fc; /* indigo-200 */
+      --accent:#7c3aed; /* violet-600 */
+      --accent-2:#06b6d4; /* cyan-500 */
+      --card:#0f172aee; /* slate-900 */
+      --ring:rgba(124,58,237,.35);
+      --ok:#22c55e;
+      --warn:#f59e0b;
+      --err:#ef4444;
+    }
+    @media(prefers-color-scheme:light){
+      :root{--bg:#f8fafc;--fg:#0b1020;--card:#ffffffee;--ring:rgba(124,58,237,.25)}
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--fg); background:var(--bg); overflow-x:hidden;
+    }
+
+    /* ── Animated gradient backdrop ─────────────────────────────── */
+    .backdrop{
+      position:fixed; inset:0; z-index:-1; overflow:hidden;
+      background:radial-gradient(1200px 800px at 10% 10%, rgba(124,58,237,.25), transparent 60%),
+                 radial-gradient(1200px 800px at 90% 20%, rgba(6,182,212,.22), transparent 60%),
+                 radial-gradient(1000px 700px at 50% 90%, rgba(99,102,241,.18), transparent 60%),
+                 radial-gradient(800px 600px at 0% 100%, rgba(236,72,153,.15), transparent 60%);
+      filter:saturate(110%) contrast(105%);
+    }
+    .orb{ position:absolute; border-radius:999px; filter:blur(40px); opacity:.35; mix-blend:screen; }
+    .o1{ width:420px; height:420px; left:-120px; top:-80px; background:linear-gradient(135deg, #8b5cf6, #06b6d4); animation:float 18s ease-in-out infinite; }
+    .o2{ width:520px; height:520px; right:-140px; top:10vh; background:linear-gradient(135deg, #22d3ee, #9333ea); animation:float 22s ease-in-out infinite reverse; }
+    .o3{ width:360px; height:360px; left:20vw; bottom:-120px; background:linear-gradient(135deg, #f472b6, #60a5fa); animation:float 26s ease-in-out infinite; }
+    @keyframes float{ 0%,100%{ transform:translateY(0) translateX(0) } 50%{ transform:translateY(-22px) translateX(12px) } }
+
+    /* ── Layout ─────────────────────────────────────────────────── */
+    .wrap{ max-width:1100px; margin:0 auto; padding:28px 20px 80px; }
+    header{ display:grid; gap:16px; align-items:center; grid-template-columns:1fr; text-align:center; padding-top:22px; }
+    @media(min-width:900px){ header{ grid-template-columns:1.2fr .8fr; text-align:left; gap:32px; } }
+
+    /* ── Hero ───────────────────────────────────────────────────── */
+    .badge{ display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); border:1px solid rgba(255,255,255,.12); backdrop-filter: blur(6px); box-shadow:0 6px 24px rgba(0,0,0,.25);
+    }
+    .badge svg{ width:18px; height:18px }
+
+    .title{ font-weight:800; line-height:1.08; font-size: clamp(2.1rem, 4.5vw, 3.4rem); letter-spacing:-.02em; }
+    .title .java{ color:transparent; background:linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip:text; background-clip:text; }
+
+    /* Typewriter */
+    .type{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; display:inline-block; position:relative; white-space:nowrap; }
+    .type::after{ content:""; position:absolute; right:-2px; top:50%; transform:translateY(-50%); width:1px; height:1.15em; background:currentColor; animation:blink 1s steps(2,end) infinite; }
+    @keyframes blink{ 0%, 49%{opacity:1} 50%, 100%{opacity:0} }
+    .type span{ display:inline-block; overflow:hidden; border-right:.15em solid transparent; width:0; animation:typing 4s steps(34,end) 1s forwards; }
+    @keyframes typing{ from{ width:0 } to{ width:100% } }
+
+    .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:22px }
+    .btn{ padding:12px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); color:var(--fg); text-decoration:none; font-weight:600; box-shadow:0 10px 30px rgba(124,58,237,.18); transition: transform .2s ease, box-shadow .2s ease; }
+    .btn:hover{ transform:translateY(-2px); box-shadow:0 16px 40px rgba(124,58,237,.28); }
+    .btn.primary{ background:linear-gradient(90deg, var(--accent), var(--accent-2)); border:0; color:white }
+
+    .cup{ font-size:56px; filter: drop-shadow(0 12px 30px rgba(0,0,0,.35)); animation:steam 4s ease-in-out infinite; text-align:center }
+    @keyframes steam{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-6px) } }
+
+    /* ── Cards ──────────────────────────────────────────────────── */
+    .grid{ display:grid; gap:18px; margin-top:34px }
+    @media(min-width:900px){ .grid{ grid-template-columns: repeat(3, 1fr) } }
+    .card{ background:var(--card); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:20px; box-shadow: 0 10px 40px rgba(0,0,0,.25); position:relative; overflow:hidden; isolation:isolate; }
+    .card::before{ content:""; position:absolute; inset:-1px; background:conic-gradient(from 0deg, transparent 0 330deg, var(--ring) 330deg), radial-gradient(400px 180px at 20% 0%, rgba(124,58,237,.08), transparent 60%); z-index:-1; mask: linear-gradient(#000, #000) content-box, linear-gradient(#000,#000); -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000,#000); padding:1px; border-radius:18px; }
+    .card h3{ margin:0 0 8px; font-size:1.1rem; letter-spacing:.2px }
+    .card p{ margin:0; opacity:.9 }
+
+    .list{ padding-left:18px; margin:10px 0 0 }
+    .list li{ margin:6px 0 }
+
+    /* Progress */
+    .progress{ height:10px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; border:1px solid rgba(255,255,255,.12); margin-top:12px; }
+    .bar{ height:100%; width:0%; background:linear-gradient(90deg, var(--accent), var(--accent-2)); animation:load 2.6s cubic-bezier(.2,.8,.2,1) forwards; }
+    @keyframes load{ to{ width:82% } }
+
+    /* Tags */
+    .tags{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px }
+    .tag{ font: 600 .85rem/1 ui-sans-serif,system-ui; border:1px dashed rgba(255,255,255,.22); padding:8px 10px; border-radius:999px; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); }
+
+    /* Timeline */
+    .timeline{ position:relative; padding-left:24px; margin:12px 0 0 }
+    .timeline::before{ content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(180deg, rgba(255,255,255,.18), transparent); }
+    .t-item{ position:relative; padding:10px 0 10px 10px; }
+    .t-item::before{ content:""; position:absolute; left:-2px; top:16px; width:10px; height:10px; border-radius:999px; background:linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow:0 0 0 3px rgba(124,58,237,.15); }
+
+    /* Footer */
+    footer{ margin-top:50px; opacity:.8; font-size:.95rem }
+    .heart{ display:inline-block; animation:pulse 1.8s ease-in-out infinite; }
+    @keyframes pulse{ 0%,100%{ transform:scale(1) } 50%{ transform:scale(1.12) } }
+
+    /* Appear animation for cards */
+    .reveal{ opacity:0; transform: translateY(16px); }
+    .reveal.in{ opacity:1; transform:none; transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+  </div>
+
+  <main class="wrap">
+    <header>
+      <section>
+        <div class="badge" aria-label="Repository badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18v-6a2 2 0 0 1 2-2h8"/><path d="m9 12 8-8"/><path d="m9 6 6 6"/></svg>
+          <span>Daily Java Practice • Exercise Solutions</span>
+        </div>
+        <h1 class="title">
+          <span class="java">Java</span> Practice Repository
+        </h1>
+        <div class="type" aria-live="polite" aria-label="typing animation"><span>Consistent coding. Clean solutions. Clear progress.</span></div>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/MrDheeraj1/java" target="_blank" rel="noopener">⭐ Star this Repo</a>
+          <a class="btn" href="#sections">Explore Sections</a>
+          <a class="btn" href="https://github.com/MrDheeraj1" target="_blank" rel="noopener">👤 @MrDheeraj1</a>
+        </div>
+      </section>
+      <section aria-hidden="true">
+        <div class="cup" title="Java ☕">☕</div>
+      </section>
+    </header>
+
+    <div id="sections" class="grid">
+      <!-- About card -->
+      <article class="card reveal">
+        <h3>📌 About this repo</h3>
+        <p>This repository hosts my <strong>daily Java practice</strong> and <strong>exercise solutions</strong>. From fundamentals to advanced topics—each commit adds one small win towards mastery.</p>
+        <div class="tags" aria-label="topics">
+          <span class="tag">Basics</span>
+          <span class="tag">OOP</span>
+          <span class="tag">Collections</span>
+          <span class="tag">Streams</span>
+          <span class="tag">Concurrency</span>
+          <span class="tag">DSA</span>
+          <span class="tag">File I/O</span>
+        </div>
+      </article>
+
+      <!-- Progress card -->
+      <article class="card reveal">
+        <h3>📈 Progress</h3>
+        <p><strong id="days">0</strong> days of practice logged so far.</p>
+        <div class="progress" aria-label="progress bar"><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="82"></div></div>
+        <ul class="list" aria-label="milestones">
+          <li>✅ Completed: Variables, Control Flow, Methods</li>
+          <li>✅ Completed: OOP (Classes, Inheritance, Polymorphism)</li>
+          <li>🚧 In progress: Data Structures & Algorithms</li>
+        </ul>
+      </article>
+
+      <!-- How to run card -->
+      <article class="card reveal">
+        <h3>▶️ How to run</h3>
+        <p>Clone the repository and run any sample:</p>
+<pre><code>git clone https://github.com/MrDheeraj1/java
+cd java
+javac src/basics/HelloWorld.java
+java -cp src basics.HelloWorld
+</code></pre>
+        <p style="margin-top:8px; opacity:.9">Organized by folders (e.g., <code>basics/</code>, <code>oop/</code>, <code>dsa/</code>). Each folder contains self‑contained examples with comments.</p>
+      </article>
+
+      <!-- Exercises card -->
+      <article class="card reveal" style="grid-column: span 2;">
+        <h3>🧠 Exercises</h3>
+        <p>Daily problem‑solving with clear, commented solutions.</p>
+        <ul class="list">
+          <li>Arrays & Strings: reversing, searching, sorting</li>
+          <li>OOP drills: encapsulation, interfaces, generics</li>
+          <li>Collections & Streams: map/filter/reduce patterns</li>
+          <li>DSA: stacks, queues, linked lists, trees, graphs</li>
+        </ul>
+      </article>
+
+      <!-- Timeline card -->
+      <article class="card reveal">
+        <h3>🗓️ Timeline</h3>
+        <div class="timeline">
+          <div class="t-item"><strong>Day 1–7:</strong> Syntax, operators, loops</div>
+          <div class="t-item"><strong>Day 8–14:</strong> Methods, arrays, basic problems</div>
+          <div class="t-item"><strong>Day 15–21:</strong> OOP foundations</div>
+          <div class="t-item"><strong>Day 22–30:</strong> Collections framework</div>
+          <div class="t-item"><strong>Beyond:</strong> Streams, concurrency, DSA practice</div>
+        </div>
+      </article>
+
+      <!-- Contribution card -->
+      <article class="card reveal" style="grid-column: span 3;">
+        <h3>🤝 Contributing</h3>
+        <p>Issues, suggestions, and PRs are welcome. If you spot a better solution or an edge case—open a discussion! Please include problem description, expected vs. actual behavior, and your environment.</p>
+        <div class="cta">
+          <a class="btn" href="https://github.com/MrDheeraj1/java/issues" target="_blank" rel="noopener">Open an Issue</a>
+          <a class="btn" href="https://github.com/MrDheeraj1/java/pulls" target="_blank" rel="noopener">Submit a PR</a>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Built with <span class="heart">❤</span> & discipline. Keep coding, keep shipping.
+    </footer>
+  </main>
+
+  <script>
+    // Lightweight entrance reveals
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target);} })
+    }, {threshold:.18});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // Simple animated day counter — edit start date to your actual streak start
+    const start = new Date('2025-08-01T00:00:00'); // ← change to your real start
+    const today = new Date();
+    const diffDays = Math.max(1, Math.ceil((today - start) / (1000*60*60*24)));
+    const daysEl = document.getElementById('days');
+    let n=0; const target = diffDays; const step = Math.max(1, Math.floor(target/60));
+    const tick = () => { n = Math.min(target, n+step); daysEl.textContent = n; if(n<target) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  </script>
+</body>
+</html>
