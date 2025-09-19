@@ -6,7 +6,7 @@ public class rowMajorSimulation {
         // Create a 2D array
         int[][] matrix = new int[rows][cols];
         
-        // Fill in column-major order manually
+        // Fill in row-major order manually
         int index = 0;
         for (int row = 0; row < rows; row++) {
         for (int col = 0; col < cols; col++) {
