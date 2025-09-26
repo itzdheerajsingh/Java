@@ -9,6 +9,8 @@
 This repository contains my **daily Java practice code** and **exercise solutions**.  
 From basics to advanced topics — one step at a time toward Java mastery.
 
+---
+
 ### Topics
 - ✅ Basics  
 - ✅ OOP (Classes, Inheritance, Polymorphism)  
@@ -16,10 +18,3 @@ From basics to advanced topics — one step at a time toward Java mastery.
 - 📈 Streams & Concurrency (coming soon)  
 
 ---
-
-## ▶️ How to Run
-```bash
-git clone https://github.com/MrDheeraj1/java
-cd java
-javac src/basics/HelloWorld.java
-java -cp src basics.HelloWorld
