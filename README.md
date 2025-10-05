@@ -23,20 +23,17 @@ From basics to advanced topics — one step at a time toward Java mastery.
 
 | Day | Description | Files |
 |-----|-------------|-------|
-| Day 1 | Introduction to Java basics | BasicSyntax, DataTypes, variable ,type casting & conversion |
+| Day 1 | Introduction to Java basics | BasicSyntax, DataTypes, Variables, Type Casting & Conversion |
 | Day 2 | Operators | All operators |
-| Day 3 | Control Flow Statements | if , else if , switch |
-| Day 4 | Loops in Java | for, while , do-while , continue , break |
-| Day 5 | Pattern | 6 pattern ques |
-| Day 6 | Functions | swap, callbyvalue , overloading , overridding |
-| Day 7 | Advanced pattern | 8 pryamid ques |
-| Day 8 | Array & searching | Basics , linear , binary search |
-| Day 9 | Array  | 7 ques |
-| Day 10 | Sorting | Bubble,insertion,selection,inbuilt,counting |
-| Day 11 | 2-D Array | diagonal sum, spiral + 4 ques |
-| Day 12 | String & String builder | Basics + 10 ques |
-
+| Day 3 | Control Flow Statements | if, else if, switch, ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
+| Day 4 | Loops in Java | for, while, do-while, continue, break, ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
+| Day 5 | Pattern | 6 different patterns |
+| Day 6 | Functions | swap, call by value, overloading, overriding, ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
+| Day 7 | Advanced Pattern | 8 different pyramids |
+| Day 8 | Array & Searching | Basics, linear, binary search, ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
+| Day 9 | Array | 7 different, ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
+| Day 10 | Sorting | Bubble, insertion, selection, inbuilt, counting, ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
+| Day 11 | 2-D Array | diagonal sum, spiral, ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
+| Day 12 | String & String Builder | Basics, ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
+| Day 13 | Bit Manipulation | (AND, OR, NOT, XOR, Right & Left Shift), (Get, Set, Clear, Update), ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
 ---
-
-
-
