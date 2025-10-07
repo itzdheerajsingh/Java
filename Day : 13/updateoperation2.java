@@ -1,7 +1,9 @@
-public class updateoperation {
+public class updateoperation2 {
     public static int update(int n,int pos,int value) {
+        //clear bit
         int bitmask = ~(1<<pos);
         n = n & bitmask;
+        //update bit
         return n | (value<<pos);
         
     }
