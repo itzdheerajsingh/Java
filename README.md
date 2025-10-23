@@ -36,5 +36,5 @@ From basics to advanced topics — one step at a time toward Java mastery.
 | Day 11 | 2-D Array | diagonal sum, spiral, ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
 | Day 12 | String & String Builder | Basics, ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
 | Day 13 | Bit Manipulation | (AND, OR, NOT, XOR, Right & Left Shift), (Get, Set, Clear, Update), ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
-| Day 13 | OOPs | |
+| Day 13 | OOPs | basics |
 ---
