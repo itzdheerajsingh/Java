@@ -37,4 +37,6 @@ From basics to advanced topics — one step at a time toward Java mastery.
 | Day 12 | String & String Builder | Basics, ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
 | Day 13 | Bit Manipulation | (AND, OR, NOT, XOR, Right & Left Shift), (Get, Set, Clear, Update), ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
 | Day 14 | OOPs | Encapsulation, Inheritance	,Polymorphism ,Abstraction,getter/setter |
+| Day 15 | Recursion Part - 1 | Basics , call stack , ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey)|
+| Day 16 | Recursion Part - 2 | Advanced practice problem based on recursion  ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey)|
 ---
