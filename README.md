@@ -41,5 +41,5 @@ From basics to advanced topics — one step at a time toward Java mastery.
 | Day 16 | Recursion Part - 2 | Advanced practice problem based on recursion  ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey)|
 | Day 17 | Devide & conquere | merge sort , heap sort,sorted & rotated array search |
 | Day 18 | Backtracking | Subsetsum,combinationsum,permutation ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
-| Day 19 | Arraylist | |
+| Day 19 | Arraylist | Basics , ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) 
 ---
