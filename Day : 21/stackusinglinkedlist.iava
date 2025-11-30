@@ -1,0 +1,45 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+
+public class StackSmallLL {
+    Node top = null;
+
+    void push(int x) {
+        Node n = new Node(x);
+        n.next = top;
+        top = n;
+    }
+
+    int pop() {
+        if (top == null) {
+            System.out.println("Stack Empty");
+            return -1;
+        }
+        int val = top.data;
+        top = top.next;
+        return val;
+    }
+
+    int peek() {
+        return (top == null) ? -1 : top.data;
+    }
+
+    public static void main(String[] args) {
+        StackSmallLL st = new StackSmallLL();
+
+        st.push(5);
+        st.push(10);
+        st.push(15);
+
+        System.out.println("Peek: " + st.peek());
+        System.out.println("Pop: " + st.pop());
+        System.out.println("Pop: " + st.pop());
+    }
+}
