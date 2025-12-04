@@ -43,5 +43,5 @@ From basics to advanced topics — one step at a time toward Java mastery.
 | Day 18 | Backtracking | Subsetsum,combinationsum,permutation ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) |
 | Day 19 | Arraylist | Basics , ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) 
 | Day 20 | linked list | Basics , ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) 
-day 30
+| Day 21 | stack | Basics , ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey)
 ---
