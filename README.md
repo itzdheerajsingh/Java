@@ -44,4 +44,6 @@ From basics to advanced topics — one step at a time toward Java mastery.
 | Day 19 | Arraylist | Basics , ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) 
 | Day 20 | linked list | Basics , ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey) 
 | Day 21 | stack | Basics , ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey)
+| Day 22 | Queue | Basics , ![Ques](https://img.shields.io/badge/-Practice%20Ques-grey)
+---
 ---
